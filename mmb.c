@@ -18,7 +18,7 @@ static Node* _get_new_node_(char32_t *name,char32_t joint_name,int32_t age,char3
 {
 
         Node *newnode = (Node*)malloc(sizeof(Node));
-        if (strcmp(acc_type,"SB")==0 && initial_depo >= 2000){
+        if (strcmp(acc_type,"SB")==0 && initial_depo >= 5000){
         newnode->data.name = name;
         newnode->data.name2 = "";
         newnode->data.age = age;
@@ -31,6 +31,7 @@ static Node* _get_new_node_(char32_t *name,char32_t joint_name,int32_t age,char3
         //printf("%ld",newnode->data.phone);
         return newnode;
         }
+        //balance (initial deposit)for the student account can be of 0 balance
         else if (strcmp(acc_type,"STUDENT")==0 && initial_depo >= 0){
         newnode->data.name = name;
         newnode->data.name2 = "";
@@ -44,7 +45,8 @@ static Node* _get_new_node_(char32_t *name,char32_t joint_name,int32_t age,char3
         //printf("%ld",newnode->data.phone);
         return newnode;
         }
-        else if(strcmp(acc_type,"JOINT")==0 && initial_depo >= 2200)
+        // 1000 minimum for the joint account 
+        else if(strcmp(acc_type,"JOINT")==0 && initial_depo >= 1000)
         {
         newnode->data.name = name;
         newnode->data.name2 = joint_name;
